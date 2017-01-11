@@ -1,0 +1,36 @@
+<html>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="resources/js/jquery.js"></script>
+    <script type="text/javascript" src="resources/js/ajaxfileupload.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(":button").click(function () {
+                ajaxFileUpload();
+            })
+        })
+        function ajaxFileUpload() {
+            $.ajaxFileUpload
+            (
+                {
+                    url: '/ClientManager/upload', //用于文件上传的服务器端请求地址
+                    secureuri: false, //是否需要安全协议，一般设置为false
+                    fileElementId: 'file1', //文件上传域的ID
+                    dataType: 'xml', //返回值类型 一般设置为json
+                    success: function(data, status)  //服务器成功响应处理函数
+                    {
+			alert("success");
+                    },
+                    error: function(data, status, e)//服务器响应失败处理函数
+                    {
+                    }
+                }
+            )
+            return false;
+        }
+    </script>
+  </head>  
+<body>
+    <p><input type="file" id="file1" name="file" multiple="multiple" /></p>
+    <input type="button" value="上传" />
+</body> 
+</html>
